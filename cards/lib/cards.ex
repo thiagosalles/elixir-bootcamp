@@ -4,15 +4,15 @@ defmodule Cards do
   """
 
   @doc """
-  Hello world.
+  Create a new deck as an array of cards.
 
   ## Examples
 
-      iex> Cards.hello()
-      :world
+      iex> Cards.create_deck()
+      ["Ace", "Two", "Three"]
 
   """
-  def hello do
-    :world
+  def creat_deck do
+    ["Ace", "Two", "Three"]
   end
 end
