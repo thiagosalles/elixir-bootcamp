@@ -5,7 +5,7 @@ Although the course uses Elixir 1.3, I decided to use the most recent version of
 
 The original repo is https://github.com/StephenGrider/ElixirCode
 
-I'll keep steps here organized by tags. If I ever need to work on a previous version of the code, I'll create a branch from the tag, work on it, update the tag and then delete the branch.
+I'll keep steps here organized by [tags](https://github.com/thiagosalles/elixir-bootcamp/tags). If I ever need to work on a previous version of the code, I'll create a branch from the tag, work on it, update the tag and then delete the branch.
 
 ## Dependencies
 
