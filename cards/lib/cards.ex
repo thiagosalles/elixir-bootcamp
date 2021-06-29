@@ -52,4 +52,26 @@ defmodule Cards do
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
+
+  @doc """
+  Get a given number of cards from a deck
+
+  ## Examples
+
+      iex> Cards.deal(["Ace", "Two", "Three"], 1)
+      {["Ace"], ["Two", "Three"]}
+
+      iex> Cards.contains(["Ace", "Two", "Three"], 2)
+      {["Ace", "Two"], ["Three"]}
+
+      iex> Cards.contains(["Ace", "Two", "Three"], 3)
+      {["Ace", "Two", "Three"], []}
+
+      iex> Cards.contains(["Ace", "Two", "Three"], 4)
+      {["Ace", "Two", "Three"], []}
+
+  """
+  def deal(deck, size) do
+    Enum.split(deck, size)
+  end
 end
