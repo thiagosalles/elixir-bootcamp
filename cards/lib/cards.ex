@@ -16,14 +16,9 @@ defmodule Cards do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
-    cards =
-      for suit <- suits do
-        for value <- values do
-          "#{value} of #{suit}"
-        end
-      end
-
-    List.flatten(cards)
+    for suit <- suits, value <- values do
+      "#{value} of #{suit}"
+    end
   end
 
   @doc """
