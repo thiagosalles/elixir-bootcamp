@@ -59,19 +59,24 @@ defmodule Cards do
   ## Examples
 
       iex> Cards.deal(["Ace", "Two", "Three"], 1)
-      {["Ace"], ["Two", "Three"]}
+      {:ok, ["Ace"], ["Two", "Three"]}
 
       iex> Cards.contains(["Ace", "Two", "Three"], 2)
-      {["Ace", "Two"], ["Three"]}
+      {:ok, ["Ace", "Two"], ["Three"]}
 
       iex> Cards.contains(["Ace", "Two", "Three"], 3)
-      {["Ace", "Two", "Three"], []}
+      {:ok, ["Ace", "Two", "Three"], []}
 
       iex> Cards.contains(["Ace", "Two", "Three"], 4)
-      {["Ace", "Two", "Three"], []}
+      {:error, "not enough cards"}
 
   """
+  def deal(deck, size) when length(deck) < size do
+    {:error, "not enough cards"}
+  end
+
   def deal(deck, size) do
-    Enum.split(deck, size)
+    {hand, new_deck} = Enum.split(deck, size)
+    {:ok, hand, new_deck}
   end
 end
