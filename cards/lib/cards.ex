@@ -109,4 +109,19 @@ defmodule Cards do
       {:error, _reason} -> "The file does not exist"
     end
   end
+
+  @doc """
+  Creates a deck, shuffle it and deal a given number of cards
+
+  ## Examples
+
+      iex> Cards.create_hand(1)
+      {:ok, ["Two"], ["Ace", "Three"]}
+
+  """
+  def create_hand(size) do
+    create_deck()
+    |> shuffle()
+    |> deal(size)
+  end
 end
