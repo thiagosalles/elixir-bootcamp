@@ -22,3 +22,9 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
 asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
 ```
+
+After that, just the following commands to install tools and dependencies:
+```
+asdf install
+iex get.deps
+```
