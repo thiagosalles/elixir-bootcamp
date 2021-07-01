@@ -79,4 +79,18 @@ defmodule Cards do
     {hand, new_deck} = Enum.split(deck, size)
     {:ok, hand, new_deck}
   end
+
+  @doc """
+  Saves the deck to the file system
+
+  ## Examples
+
+      iex> Cards.save(["Ace", "Two", "Three"], "deck1")
+      :ok
+
+  """
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
 end
