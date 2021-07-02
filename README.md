@@ -28,3 +28,17 @@ After that, just run the following commands to install tools and dependencies:
 asdf install
 mix deps.get
 ```
+
+## Documentation
+
+To generate the documentation page, run:
+```
+mix docs
+```
+
+## Tests
+
+To run tests:
+```
+mix test
+```
