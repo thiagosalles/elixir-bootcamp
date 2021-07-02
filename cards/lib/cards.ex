@@ -9,7 +9,7 @@ defmodule Cards do
   ## Examples
 
       iex> Cards.create_deck()
-      ["Ace of Spades", "Two of Diamonds", "Three of Clubs"]
+      ["Ace of Spades", "Two of Spades", "Three of Spades", ...]
 
   """
   def create_deck do
@@ -58,16 +58,18 @@ defmodule Cards do
 
   ## Examples
 
-      iex> Cards.deal(["Ace", "Two", "Three"], 1)
-      {:ok, ["Ace"], ["Two", "Three"]}
-
-      iex> Cards.deal(["Ace", "Two", "Three"], 4)
-      {:error, "not enough cards"}
+      iex> Cards.deal(["Ace", "Two", "Three"], 2)
+      {:ok, ["Ace", "Two"], ["Three"]}
 
       iex> deck = Cards.create_deck()
       iex> {:ok, hand, deck} = Cards.deal(deck, 1)
       iex> hand
       ["Ace of Spades"]
+
+  Decks with not enough cards return an error:
+
+      iex> Cards.deal(["Ace", "Two", "Three"], 4)
+      {:error, "not enough cards"}]
 
   """
   def deal(deck, size) when length(deck) < size do
