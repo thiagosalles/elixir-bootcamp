@@ -1,15 +1,15 @@
 defmodule Cards do
   @moduledoc """
-  Documentation for `Cards`.
+    Provides method for creating and handling a deck of cards
   """
 
   @doc """
-  Create a new deck as an array of cards.
+    Creates a new deck as an array of cards.
 
   ## Examples
 
       iex> Cards.create_deck()
-      ["Ace", "Two", "Three"]
+      ["Ace of Spades", "Two of Diamonds", "Three of Clubs"]
 
   """
   def create_deck do
@@ -22,7 +22,7 @@ defmodule Cards do
   end
 
   @doc """
-  Returns the deck with the cards in a new random order
+    Returns the deck with the cards in a new random order
 
   ## Examples
 
@@ -38,14 +38,14 @@ defmodule Cards do
   end
 
   @doc """
-  Check if a collection cards contains a specific card
+    Checks if a collection of cards contains a specific card
 
   ## Examples
 
-      iex> Cards.contains(["Ace", "Two", "Three"], "Two")
+      iex> Cards.contains?(["Ace", "Two", "Three"], "Two")
       true
 
-      iex> Cards.contains(["Ace", "Two", "Three"], "Four")
+      iex> Cards.contains?(["Ace", "Two", "Three"], "Four")
       false
 
   """
@@ -54,21 +54,20 @@ defmodule Cards do
   end
 
   @doc """
-  Get a given number of cards from a deck
+    Gets a given number of cards from a deck
 
   ## Examples
 
       iex> Cards.deal(["Ace", "Two", "Three"], 1)
       {:ok, ["Ace"], ["Two", "Three"]}
 
-      iex> Cards.contains(["Ace", "Two", "Three"], 2)
-      {:ok, ["Ace", "Two"], ["Three"]}
-
-      iex> Cards.contains(["Ace", "Two", "Three"], 3)
-      {:ok, ["Ace", "Two", "Three"], []}
-
-      iex> Cards.contains(["Ace", "Two", "Three"], 4)
+      iex> Cards.deal(["Ace", "Two", "Three"], 4)
       {:error, "not enough cards"}
+
+      iex> deck = Cards.create_deck()
+      iex> {:ok, hand, deck} = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of Spades"]
 
   """
   def deal(deck, size) when length(deck) < size do
@@ -81,7 +80,7 @@ defmodule Cards do
   end
 
   @doc """
-  Saves the deck to the file system
+    Saves the deck to the file system
 
   ## Examples
 
@@ -95,7 +94,7 @@ defmodule Cards do
   end
 
   @doc """
-  Loads a deck from the file system
+    Loads a deck from the file system
 
   ## Examples
 
@@ -111,12 +110,16 @@ defmodule Cards do
   end
 
   @doc """
-  Creates a deck, shuffle it and deal a given number of cards
+    Creates a deck, shuffle it and deal a given number of cards
 
   ## Examples
 
       iex> Cards.create_hand(1)
       {:ok, ["Two"], ["Ace", "Three"]}
+
+      iex> {:ok, hand, deck} = Cards.create_hand(1)
+      iex> hand
+      ["Five of Hearts"]
 
   """
   def create_hand(size) do
